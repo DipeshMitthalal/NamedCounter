@@ -7,44 +7,46 @@ import org.json.JSONObject;
 
 public class SingletonClass {
 	/*
-	 * If instance is not made volatile, another thread can see 
-	 * a half initialized instance of singletonclass
+	 * If instance is not made volatile, another thread can see a half
+	 * initialized instance of singletonclass
 	 */
 	private volatile static SingletonClass _instance = null;
 	/*
-	 * variable is volatile so that multiple threads when access do not see the 
+	 * variable is volatile so that multiple threads when access do not see the
 	 * locally cached stale value. guarantees that threads see the recent value
 	 * volatile static to force the thread to see global value each time
 	 * volatile is not substitute for synchronization hence atomic integer
 	 * 
-	 * atomicInteger here for thread safety else we might need to use synchronized while incrementing the value
+	 * atomicInteger here for thread safety else we might need to use
+	 * synchronized while incrementing the value
 	 */
 	private volatile static AtomicInteger atomicInteger = null;
 	/*
-	 * concurrentHashmap for thread safety
-	 * volatile so that if one thread alters the value, other threads will see it
+	 * concurrentHashmap for thread safety volatile so that if one thread alters
+	 * the value, other threads will see it
 	 */
 	private volatile ConcurrentHashMap<String, AtomicInteger> namedCounterMap = null;
-   
-	private SingletonClass(){
+
+	private SingletonClass() {
 		/*
-		 * This private constructor also to prevent creating another instance of class 
+		 * This private constructor also to prevent creating another instance of
+		 * class
 		 */
 		atomicInteger = new AtomicInteger();
 		namedCounterMap = new ConcurrentHashMap<String, AtomicInteger>();
 	}
-	
+
 	/*
-	 * Singleton pattern  gives the flexiblity an Object, 
-	 * while static class provide static methods.
+	 * Singleton pattern gives the flexiblity an Object, while static class
+	 * provide static methods.
 	 */
 
 	/*
-	 * Using lazy loading here so that singleton instance is initialized when the 
-	 * below method is called for first time
-	 * Also, The below implementation is double checked locking of singleton
-	 * This is to minimize the cost of synchronization and improve performance by locking
-	 * only the critical section of the code
+	 * Using lazy loading here so that singleton instance is initialized when
+	 * the below method is called for first time Also, The below implementation
+	 * is double checked locking of singleton This is to minimize the cost of
+	 * synchronization and improve performance by locking only the critical
+	 * section of the code
 	 */
 	public static SingletonClass getInstance() {
 		if (_instance == null) {
@@ -60,8 +62,6 @@ public class SingletonClass {
 		return _instance;
 	}
 
-	
-
 	public int increment() {
 		return atomicInteger.getAndIncrement();
 	}
@@ -70,34 +70,37 @@ public class SingletonClass {
 		return atomicInteger.get();
 	}
 
-	public int getValueFromMap(String namedCounter) {
+	public String getValueFromMap(String namedCounter) {
 		// TODO Auto-generated method stub
-		if (namedCounterMap.get(namedCounter)==null)
-			return 0;
-			else
-			return	namedCounterMap.get(namedCounter).get();
+		String response = String.valueOf(namedCounterMap.get(namedCounter));
 		
+		if (response.equals("null"))
+			return "NA";
+		else
+			return response;
+
 	}
-	
-	public int incrementValueInMap(String namedCounter) {
-		if (namedCounterMap.get(namedCounter)==null)
-			return 0;
-			else
-			return	namedCounterMap.get(namedCounter).incrementAndGet();
-	
+
+	public String incrementValueInMap(String namedCounter) {
+		AtomicInteger response = namedCounterMap.get(namedCounter);
+		if (response==null)
+			return "NA";
+		else
+			return String.valueOf(response.incrementAndGet());
+
 	}
-	
-    public String addNamedCounter(String namedCounter){
-    	namedCounterMap.put(namedCounter, new AtomicInteger());
-    	return namedCounter +" Successfully added";
-    }
-    
-    public String getAllNamedParamaters(){
-    	String s="";
-    	JSONObject js = new JSONObject();
-    	String d =new JSONObject(namedCounterMap).toString();
-    	for(ConcurrentHashMap.Entry<String, AtomicInteger> entry : namedCounterMap.entrySet())
-    		js.put(entry.getKey(), entry.getValue());
-    	return js.toString();
-    }
+
+	public String addNamedCounter(String namedCounter) {
+		namedCounterMap.put(namedCounter, new AtomicInteger());
+		return namedCounter + " Successfully added";
+	}
+
+	public String getAllNamedParamaters() {
+		String s = "";
+		JSONObject js = new JSONObject();
+		String d = new JSONObject(namedCounterMap).toString();
+		for (ConcurrentHashMap.Entry<String, AtomicInteger> entry : namedCounterMap.entrySet())
+			js.put(entry.getKey(), entry.getValue());
+		return js.toString();
+	}
 }
