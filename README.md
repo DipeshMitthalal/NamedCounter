@@ -1,27 +1,28 @@
 # NamedCounter
 This  is a WEB API Which allows user to create a counter , increment the same and also retrieve the list of counter
 
-Heroku Link:
-https://namedcounter.herokuapp.com/NamedCounterAPI/
+Heroku Link: https://namedcounter.herokuapp.com/NamedCounterAPI/
 
-The below requests are used to create a named counter. Any number of counters can be created. Counters will be intialized to value Zero
-Request format  https://namedcounter.herokuapp.com/NamedCounterAPI/insert/{nameofthecounter1}
-
-For example:
-  Request Type: PUT
+Requests to create a named counter. 
+Any number of counters can be created. Counters will be intialized to value Zero
+Request format [PUT] https://namedcounter.herokuapp.com/NamedCounterAPI/insert/{nameofthecounter1}
+Examples:
   https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter1
   https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter2
   https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter3
 
-The below requests are to increment the value of counter by 1
-Request Type: GET
+
+Requests to increment the value of counter by 1
+Request format [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/{nameofthecounter1}
+Examples:
   https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter1
   https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter2
   https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter3
 
 
-The below requests are to get the present value of any counter
-Request Type: GET
+Requests to get the present value of any counter
+Request format [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/{nameofthecounter1}
+Examples:
   https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter1
   https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter2
   https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter3
