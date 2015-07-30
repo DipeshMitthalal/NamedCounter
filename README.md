@@ -1,11 +1,12 @@
 # NamedCounter
 This  is a WEB API Which allows user to create a counter , increment the same and also retrieve the list of counter
-Basic Testing
 
+Heroku Link:
 https://namedcounter.herokuapp.com/NamedCounterAPI/
 
-The below requests are to create a named counter. any number of counters can be created. Counters will be intialized to value Zero
+The below requests are used to create a named counter. Any number of counters can be created. Counters will be intialized to value Zero
 Request format  https://namedcounter.herokuapp.com/NamedCounterAPI/insert/{nameofthecounter1}
+
 For example:
   [PUT] https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter1
   [PUT] https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter2
@@ -34,4 +35,4 @@ Opened three different tabs . in two tabs incrementing the value of one counter 
 
 Test case: 25 virtual users create requests in parallel. At the end of the test, the value of the counter should be equal to the sum of requests sent. 
 
-
+The source code also contains a small junit test scenario just to check if all the urls are working.
