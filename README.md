@@ -34,9 +34,9 @@ The below URL will get the list of the namedcounters along with the value
   [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/getList
 
 
-Load Testing in Multithreaded Environment
+Load Testing in Multithreaded Environment:
 
-I used website https://loadimpact.com/ to load test the api in multi threaded environment simumating real user.
+I used website https://loadimpact.com/ to load test the api in multi threaded environment simulating the real users.
 
 Opened three different tabs . in two tabs incrementing the value of one counter ( in parallel) and in third tab accessing the list , also accessing the value of the named counter
 
