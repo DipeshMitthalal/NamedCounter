@@ -44,4 +44,4 @@ Test case: 25 virtual users create requests in parallel. At the end of the test,
 
 The source code also contains a small junit test scenario just to check if all the urls are working.
 
-Note: Negative cases not implemented. i.e if you try to access a counter which is not present, API will always return its  value as zero. If you also try to increment the value of the counter which is not present, it will always return zero. 
+Note: Error messages for negative cases not implemented. i.e if you try to access a counter which is not present, API will always return its  value as zero. If you also try to increment the value of the counter which is not present, it will always return zero. In code necessary check is in place. It is just that return response has to be tweaked
