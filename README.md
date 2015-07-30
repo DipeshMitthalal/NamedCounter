@@ -8,22 +8,26 @@ The below requests are used to create a named counter. Any number of counters ca
 Request format  https://namedcounter.herokuapp.com/NamedCounterAPI/insert/{nameofthecounter1}
 
 For example:
-  [PUT] https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter1
-  [PUT] https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter2
-  [PUT] https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter3
+  Request Type: PUT
+  https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter1
+  https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter2
+  https://namedcounter.herokuapp.com/NamedCounterAPI/insert/counter3
 
 The below requests are to increment the value of counter by 1
-  [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter1
-  [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter2
-  [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter3
+Request Type: GET
+  https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter1
+  https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter2
+  https://namedcounter.herokuapp.com/NamedCounterAPI/incrementValue/counter3
 
 
 The below requests are to get the present value of any counter
-  [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter1
-  [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter2
-  [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter3
+Request Type: GET
+  https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter1
+  https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter2
+  https://namedcounter.herokuapp.com/NamedCounterAPI/getValue/counter3
 
 The below URL will get the list of the namedcounters along with the value
+
   [GET] https://namedcounter.herokuapp.com/NamedCounterAPI/getList
 
 
